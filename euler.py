@@ -1,7 +1,7 @@
-from equation import DifferentialEquation as de
+from equation import DifferentialEquation
 
 
 class EulerMethod:
     @staticmethod
     def euler_approx(x, y, h):
-        return y + h * de.f(x, y)
+        return y + h * DifferentialEquation.f(x, y)

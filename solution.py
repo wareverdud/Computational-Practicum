@@ -1,6 +1,5 @@
 import exceptions
 from numpy import cbrt
-import numpy as np
 
 
 class ExactSolution:
@@ -19,8 +18,8 @@ class ExactSolution:
         if h >= 1:
             raise exceptions.Step
         x = [0 for _ in range(N + 1)]
-        x[0] = x0
         y = [0 for _ in range(N + 1)]
+        x[0] = x0
         y[0] = ExactSolution.f(x[0], c)
         for i in range(1, N+1):
             x[i] = x[i-1] + h

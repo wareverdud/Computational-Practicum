@@ -1,9 +1,9 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
-import first_page
-import second_page
-import third_page
+from first_page import FirstPage
+from second_page import SecondPage
+from third_page import ThirdPage
 from main import Main, MainUpdated
 import exceptions
 
@@ -32,9 +32,9 @@ e_3 = BooleanVar(master=tab3, value=True)
 ie_3 = BooleanVar(master=tab3, value=True)
 rk_3 = BooleanVar(master=tab3, value=True)
 
-first_page.run(program)
-second_page.run(program)
-third_page.run(program3)
+FirstPage.run(program)
+SecondPage.run(program)
+ThirdPage.run(program3)
 
 picture1 = PhotoImage(file='figure1.png')
 graph1 = Label(tab1, image=picture1)
@@ -47,18 +47,6 @@ graph2.pack()
 picture3 = PhotoImage(file='figure3.png')
 graph3 = Label(tab3, image=picture3)
 graph3.pack()
-
-
-def update():
-    global graph1
-    global picture1
-    picture1 = PhotoImage(file='figure1.png')
-    graph1.config(image=picture1)
-
-    global graph2
-    global picture2
-    picture2 = PhotoImage(file='figure2.png')
-    graph2.config(image=picture2)
 
 
 def catch_disc(function):
@@ -79,73 +67,87 @@ def catch_disc(function):
     return wrapper
 
 
+def update_decorator(function):
+    def wrapper():
+        function()
+
+        global graph1
+        global picture1
+        picture1 = PhotoImage(file='figure1.png')
+        graph1.config(image=picture1)
+
+        global graph2
+        global picture2
+        picture2 = PhotoImage(file='figure2.png')
+        graph2.config(image=picture2)
+    return wrapper
+
+
+def run12(function):
+    def wrapper():
+        function()
+        FirstPage.run(program)
+        SecondPage.run(program)
+    return wrapper
+
+
 @catch_disc
+@update_decorator
+@run12
 def change_N():
-    # temp_N = int(entry_N.get())
-    # program.
     program.N = int(entry_N.get())
-    first_page.run(program)
-    second_page.run(program)
-    update()
 
 
 @catch_disc
+@update_decorator
+@run12
 def change_x0():
     program.x0 = float(entry_x0.get())
     program3.x0 = float(entry_x0.get())
-    first_page.run(program)
-    second_page.run(program)
-    update()
 
 
 @catch_disc
+@update_decorator
+@run12
 def change_y0():
     program.y0 = float(entry_y0.get())
     program3.y0 = float(entry_y0.get())
-    first_page.run(program)
-    second_page.run(program)
-    update()
 
 
 @catch_disc
+@update_decorator
+@run12
 def change_X():
     program.X = float(entry_X.get())
     program3.X = float(entry_X.get())
-    first_page.run(program)
-    second_page.run(program)
-    update()
 
 
 @catch_disc
+@update_decorator
+@run12
 def euler():
     program.e = e.get()
-    first_page.run(program)
-    second_page.run(program)
-    update()
 
 
 @catch_disc
+@update_decorator
+@run12
 def ieuler():
     program.ie = ie.get()
-    first_page.run(program)
-    second_page.run(program)
-    update()
 
 
 @catch_disc
+@update_decorator
+@run12
 def rungekutta():
     program.rk = rk.get()
-    first_page.run(program)
-    second_page.run(program)
-    update()
 
 
 @catch_disc
+@update_decorator
+@run12
 def exact():
     program.ex = ex.get()
-    first_page.run(program)
-    second_page.run(program)
-    update()
 
 
 entry_N = Entry(tab1)
@@ -179,47 +181,56 @@ enable_exact = Checkbutton(tab1, text='Exact', variable=ex, offvalue=False, onva
 enable_exact.pack(side=RIGHT)
 
 
-@catch_disc
-def update_3():
-    global graph3
-    global picture3
-    picture3 = PhotoImage(file='figure3.png')
-    graph3.config(image=picture3)
+def update3_decorator(function):
+    def wrapper():
+        function()
+        global graph3
+        global picture3
+        picture3 = PhotoImage(file='figure3.png')
+        graph3.config(image=picture3)
+    return wrapper
+
+
+def run3(function):
+    def wrapper():
+        function()
+        ThirdPage.run(program3)
+    return wrapper
 
 
 @catch_disc
+@update3_decorator
+@run3
 def change_n0():
     program3.n0 = int(entry_n0.get())
-    third_page.run(program3)
-    update_3()
 
 
 @catch_disc
+@update3_decorator
+@run3
 def change_n():
     program3.n_final = int(entry_n.get())
-    third_page.run(program3)
-    update_3()
 
 
 @catch_disc
+@update3_decorator
+@run3
 def euler_3():
     program3.e = e_3.get()
-    third_page.run(program3)
-    update_3()
 
 
 @catch_disc
+@update3_decorator
+@run3
 def ieuler_3():
     program3.ie = ie_3.get()
-    third_page.run(program3)
-    update_3()
 
 
 @catch_disc
+@update3_decorator
+@run3
 def rungekutta_3():
     program3.rk = rk_3.get()
-    third_page.run(program3)
-    update_3()
 
 
 entry_n0 = Entry(tab3)
