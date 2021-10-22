@@ -9,38 +9,20 @@ from numpy import cbrt
 
 class Main:
     def __init__(self):
-        # Equation 10
-        self.N = 5  # -> not specified
+        self.N = 5
         self.x0 = 1
         self.y0 = 2
-        self.X = 5  # -> 5
-
-        # Equation 6
-        # self.N = 5
-        # self.x0 = 0
-        # self.y0 = 0
-        # self.X = 10
+        self.X = 5
 
         self.e = True
         self.ie = True
         self.rk = True
         self.ex = True
-        self.c = 0
-
-    # def set_c(self, ):
-    #     c = self.
 
     def run(self):
-
-        # c = (self.x0 * self.y0 - 2) * self.x0 ** (1 / 3) / (1 - self.x0 * self.y0)
-
-        # Equation 10
         if self.x0 * self.y0 == 1:
             raise exceptions.Constant
-        self.c = (self.x0 * self.y0 - 2) * cbrt(self.x0) / (1 - self.x0 * self.y0)
-
-        # Equation 6
-        # self.c = (self.x0*self.x0 + self.y0 + 1) / float(np.exp(self.x0*self.x0))
+        c = (self.x0 * self.y0 - 2) * cbrt(self.x0) / (1 - self.x0 * self.y0)
 
         euler_method_solved = []
         ie_solved = []
@@ -48,14 +30,14 @@ class Main:
         exact_solved = []
         if self.e:
             euler_method_solved = Approximation.solve(self.x0, self.y0, self.X, self.N, EulerMethod.euler_approx,
-                                                      self.c)
+                                                      c)
         if self.ie:
-            ie_solved = Approximation.solve(self.x0, self.y0, self.X, self.N, ImprovedEulerMethod.ie_approx, self.c)
+            ie_solved = Approximation.solve(self.x0, self.y0, self.X, self.N, ImprovedEulerMethod.ie_approx, c)
         if self.rk:
             runge_kutta_solved = Approximation.solve(self.x0, self.y0, self.X, self.N,
-                                                     RungeKuttaMethod.runge_kutta_approx, self.c)
+                                                     RungeKuttaMethod.runge_kutta_approx, c)
         if self.ex:
-            exact_solved = ExactSolution.solve(self.x0, self.X, self.N, self.c)
+            exact_solved = ExactSolution.solve(self.x0, self.X, self.N, c)
         return euler_method_solved, ie_solved, runge_kutta_solved, exact_solved
 
 

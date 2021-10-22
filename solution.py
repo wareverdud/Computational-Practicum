@@ -5,12 +5,9 @@ from numpy import cbrt
 class ExactSolution:
     @staticmethod
     def f(x, c):
-        # Equation 10
         if x == 0 or cbrt(x) == -c:
             raise exceptions.Solution(x)
         return (c + 2 * cbrt(x)) / (c*x + x*cbrt(x))
-        # Equation 6
-        # return c*float(np.exp(x*x)) - x*x - 1
 
     @staticmethod
     def solve(x0, X, N, c):

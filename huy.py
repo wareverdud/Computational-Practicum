@@ -28,9 +28,9 @@ ie = BooleanVar(master=tab1, value=True)
 rk = BooleanVar(master=tab1, value=True)
 ex = BooleanVar(master=tab1, value=True)
 
-e_3 = BooleanVar(master=tab3, value=True)
-ie_3 = BooleanVar(master=tab3, value=True)
-rk_3 = BooleanVar(master=tab3, value=True)
+e3 = BooleanVar(master=tab3, value=True)
+ie3 = BooleanVar(master=tab3, value=True)
+rk3 = BooleanVar(master=tab3, value=True)
 
 FirstPage.run(program)
 SecondPage.run(program)
@@ -67,7 +67,7 @@ def catch_disc(function):
     return wrapper
 
 
-def update_decorator(function):
+def update12(function):
     def wrapper():
         function()
 
@@ -92,14 +92,14 @@ def run12(function):
 
 
 @catch_disc
-@update_decorator
+@update12
 @run12
 def change_N():
     program.N = int(entry_N.get())
 
 
 @catch_disc
-@update_decorator
+@update12
 @run12
 def change_x0():
     program.x0 = float(entry_x0.get())
@@ -107,7 +107,7 @@ def change_x0():
 
 
 @catch_disc
-@update_decorator
+@update12
 @run12
 def change_y0():
     program.y0 = float(entry_y0.get())
@@ -115,7 +115,7 @@ def change_y0():
 
 
 @catch_disc
-@update_decorator
+@update12
 @run12
 def change_X():
     program.X = float(entry_X.get())
@@ -123,28 +123,28 @@ def change_X():
 
 
 @catch_disc
-@update_decorator
+@update12
 @run12
 def euler():
     program.e = e.get()
 
 
 @catch_disc
-@update_decorator
+@update12
 @run12
 def ieuler():
     program.ie = ie.get()
 
 
 @catch_disc
-@update_decorator
+@update12
 @run12
 def rungekutta():
     program.rk = rk.get()
 
 
 @catch_disc
-@update_decorator
+@update12
 @run12
 def exact():
     program.ex = ex.get()
@@ -152,21 +152,25 @@ def exact():
 
 entry_N = Entry(tab1)
 entry_N.pack(side=LEFT)
+entry_N.insert(0, '5')
 submit_N = Button(tab1, text='Change N', command=change_N)
 submit_N.pack(side=LEFT)
 
 entry_x0 = Entry(tab1)
 entry_x0.pack(side=LEFT)
+entry_x0.insert(0, '1')
 submit_x0 = Button(tab1, text='Change x0', command=change_x0)
 submit_x0.pack(side=LEFT)
 
 entry_y0 = Entry(tab1)
 entry_y0.pack(side=LEFT)
+entry_y0.insert(0, '2')
 submit_y0 = Button(tab1, text='Change y0', command=change_y0)
 submit_y0.pack(side=LEFT)
 
 entry_X = Entry(tab1)
 entry_X.pack(side=LEFT)
+entry_X.insert(0, '5')
 submit_X = Button(tab1, text='Change X', command=change_X)
 submit_X.pack(side=LEFT)
 
@@ -181,7 +185,7 @@ enable_exact = Checkbutton(tab1, text='Exact', variable=ex, offvalue=False, onva
 enable_exact.pack(side=RIGHT)
 
 
-def update3_decorator(function):
+def update3(function):
     def wrapper():
         function()
         global graph3
@@ -199,56 +203,58 @@ def run3(function):
 
 
 @catch_disc
-@update3_decorator
+@update3
 @run3
 def change_n0():
     program3.n0 = int(entry_n0.get())
 
 
 @catch_disc
-@update3_decorator
+@update3
 @run3
 def change_n():
     program3.n_final = int(entry_n.get())
 
 
 @catch_disc
-@update3_decorator
+@update3
 @run3
 def euler_3():
-    program3.e = e_3.get()
+    program3.e = e3.get()
 
 
 @catch_disc
-@update3_decorator
+@update3
 @run3
 def ieuler_3():
-    program3.ie = ie_3.get()
+    program3.ie = ie3.get()
 
 
 @catch_disc
-@update3_decorator
+@update3
 @run3
 def rungekutta_3():
-    program3.rk = rk_3.get()
+    program3.rk = rk3.get()
 
 
 entry_n0 = Entry(tab3)
+entry_n0.insert(0, '5')
 entry_n0.pack(side=LEFT)
 submit_n0 = Button(tab3, text='Change n0', command=change_n0)
 submit_n0.pack(side=LEFT)
 
 entry_n = Entry(tab3)
+entry_n.insert(0, '19')
 entry_n.pack(side=LEFT)
 submit_n = Button(tab3, text='Change N', command=change_n)
 submit_n.pack(side=LEFT)
 
-enable_euler_3 = Checkbutton(tab3, text='Euler Method', variable=e_3, offvalue=False, onvalue=True, command=euler_3)
+enable_euler_3 = Checkbutton(tab3, text='Euler Method', variable=e3, offvalue=False, onvalue=True, command=euler_3)
 enable_euler_3.pack(side=RIGHT)
-enable_improved_3 = Checkbutton(tab3, text='Improved Euler Method', variable=ie_3, offvalue=False, onvalue=True,
+enable_improved_3 = Checkbutton(tab3, text='Improved Euler Method', variable=ie3, offvalue=False, onvalue=True,
                                 command=ieuler_3)
 enable_improved_3.pack(side=RIGHT)
-enable_rk_3 = Checkbutton(tab3, text='Runge-Kutta Method', variable=rk_3, offvalue=False, onvalue=True,
+enable_rk_3 = Checkbutton(tab3, text='Runge-Kutta Method', variable=rk3, offvalue=False, onvalue=True,
                           command=rungekutta_3)
 enable_rk_3.pack(side=RIGHT)
 
