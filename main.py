@@ -21,8 +21,8 @@ class Main:
 
     def run(self):
         if self.x0 * self.y0 == 1:
-            raise exceptions.Constant
-        c = (self.x0 * self.y0 - 2) * cbrt(self.x0) / (1 - self.x0 * self.y0)
+            raise exceptions.ConstantException
+        c = (self.x0 * self.y0 - 2) * float(cbrt(self.x0)) / (1 - self.x0 * self.y0)
 
         euler_method_solved = []
         ie_solved = []
@@ -86,11 +86,11 @@ if __name__ == '__main__':
     # main2.run()
     # derivative exception
 
-    # main3 = Main()
-    # main3.N = 2
-    # main3.x0 = -0.1
-    # main3.X = 0.1
-    # main3.run()
+    main3 = Main()
+    main3.N = 2
+    main3.x0 = -0.1
+    main3.X = 0.1
+    main3.run()
 
     # main4 = Main()
     # main4.N = 35
@@ -99,5 +99,5 @@ if __name__ == '__main__':
     # main4.y0 = 7
     # main4.run()
 
-    main5 = Main()
-    main5.run()
+    # main5 = Main()
+    # main5.run()

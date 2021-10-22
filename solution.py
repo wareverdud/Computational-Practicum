@@ -5,15 +5,15 @@ from numpy import cbrt
 class ExactSolution:
     @staticmethod
     def f(x, c):
-        if x == 0 or cbrt(x) == -c:
-            raise exceptions.Solution(x)
-        return (c + 2 * cbrt(x)) / (c*x + x*cbrt(x))
+        if x == 0 or float(cbrt(x)) == -c:
+            raise exceptions.SolutionException(x)
+        return (c + 2 * float(cbrt(x))) / (c*x + x*float(cbrt(x)))
 
     @staticmethod
     def solve(x0, X, N, c):
         h = (X - x0) / N
         if h >= 1:
-            raise exceptions.Step
+            raise exceptions.StepException
         x = [0 for _ in range(N + 1)]
         y = [0 for _ in range(N + 1)]
         x[0] = x0

@@ -7,7 +7,7 @@ class Approximation:
     def solve(x0, y0, X, N, method_of_approximation, c):
         h = (X - x0) / N
         if h >= 1:
-            raise exceptions.Step
+            raise exceptions.StepException
         x = [0 for _ in range(N + 1)]
         x[0] = x0
         y = [0 for _ in range(N + 1)]

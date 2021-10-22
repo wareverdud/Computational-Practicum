@@ -1,19 +1,19 @@
-class Solution(Exception):
+class SolutionException(Exception):
     def __init__(self, x):
         super().__init__()
         self.x = x
 
 
-class Constant(Exception):
+class ConstantException(Exception):
     def __init__(self):
         super().__init__()
 
 
-class Derivative(Exception):
+class DerivativeException(Exception):
     def __init__(self):
         super().__init__()
 
 
-class Step(Exception):
+class StepException(Exception):
     def __init__(self):
         super().__init__()
