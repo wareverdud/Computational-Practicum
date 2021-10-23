@@ -23,6 +23,7 @@ class Approximation:
         for i in range(1, N + 1):
             x[i] = x[i - 1] + h
             y[i] = method_of_approximation(x[i - 1], y[i - 1], h)
+            # y[i] = method_of_approximation(x[i - i], y_exact[i - 1], h)
             y_exact[i] = ExactSolution.f(x[i], c)
             y_with_exact[i] = method_of_approximation(x[i - 1], y_exact[i - 1], h)
             lte[i] = abs(y_exact[i] - y_with_exact[i])
