@@ -5,8 +5,6 @@ from numpy import cbrt
 class ExactSolution:
     @staticmethod
     def f(x, c):
-        if x == 0 or float(cbrt(x)) == -c:
-            raise exceptions.SolutionException()
         return (c + 2 * float(cbrt(x))) / (c*x + x*float(cbrt(x)))
 
     @staticmethod

@@ -57,8 +57,6 @@ def catch_disc(function):
             messagebox.showinfo(title='Error', message=f'Given interval has a discontinuity\nTry another interval')
         except exceptions.ConstantException:
             messagebox.showinfo(title='Error', message='Constant cannot be computer\nTry another initial values')
-        except exceptions.DerivativeException:
-            messagebox.showinfo(title='Error', message='Derivative cannot be computed')
         except exceptions.StepException:
             messagebox.showinfo(title='Error', message='Step is >= 1\nTry greater number of steps')
     return wrapper
