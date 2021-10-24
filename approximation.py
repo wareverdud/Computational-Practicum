@@ -5,6 +5,10 @@ from solution import ExactSolution
 class Approximation:
     @staticmethod
     def solve(x0, y0, X, N, method_of_approximation, c):
+        if x0 <= 0 <= X or X <= 0 <= x0:
+            raise exceptions.SolutionException
+        if x0 <= (-(c**3)) <= X or X <= (-(c**3)) <= x0:
+            raise exceptions.SolutionException
         h = (X - x0) / N
         if h >= 1:
             raise exceptions.StepException

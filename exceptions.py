@@ -1,7 +1,6 @@
 class SolutionException(Exception):
-    def __init__(self, x):
+    def __init__(self):
         super().__init__()
-        self.x = x
 
 
 class ConstantException(Exception):
@@ -15,5 +14,10 @@ class DerivativeException(Exception):
 
 
 class StepException(Exception):
+    def __init__(self):
+        super().__init__()
+
+
+class NumberOfStepsException(Exception):
     def __init__(self):
         super().__init__()

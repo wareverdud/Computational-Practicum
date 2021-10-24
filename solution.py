@@ -6,11 +6,15 @@ class ExactSolution:
     @staticmethod
     def f(x, c):
         if x == 0 or float(cbrt(x)) == -c:
-            raise exceptions.SolutionException(x)
+            raise exceptions.SolutionException()
         return (c + 2 * float(cbrt(x))) / (c*x + x*float(cbrt(x)))
 
     @staticmethod
     def solve(x0, X, N, c):
+        if x0 <= (-(c ** 3)) <= X or X <= (-(c ** 3)) <= x0:
+            raise exceptions.SolutionException()
+        if x0 <= 0 <= X or X <= 0 <= x0:
+            raise exceptions.SolutionException()
         h = (X - x0) / N
         if h >= 1:
             raise exceptions.StepException

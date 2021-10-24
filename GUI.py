@@ -53,9 +53,8 @@ def catch_disc(function):
     def wrapper():
         try:
             function()
-        except exceptions.SolutionException as exc:
-            messagebox.showinfo(title='Error', message=f'Given interval has a discontinuity at point {exc.x}\nTry '
-                                                       f'another interval')
+        except exceptions.SolutionException:
+            messagebox.showinfo(title='Error', message=f'Given interval has a discontinuity\nTry another interval')
         except exceptions.ConstantException:
             messagebox.showinfo(title='Error', message='Constant cannot be computer\nTry another initial values')
         except exceptions.DerivativeException:

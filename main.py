@@ -48,6 +48,8 @@ class MainUpdated(Main):
         self.n_final = 19
 
     def run(self):
+        if self.n_final < self.n0:
+            raise exceptions.NumberOfStepsException
         n = []
         gte_e = []
         gte_ie = []
